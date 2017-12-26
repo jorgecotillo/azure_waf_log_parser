@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BlobService, createTableService, createBlobService, ServiceResponse } from 'azure-storage'
+import { environment } from '../../../../Environments/environment'
 
 @Component({
     selector: 'counter',

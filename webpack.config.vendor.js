@@ -15,12 +15,19 @@ const treeShakableModules = [
     'zone.js',
 ];
 const nonTreeShakableModules = [
-    'bootstrap',
-    'bootstrap/dist/css/bootstrap.css',
+    //'bootstrap',
+    //'bootstrap/dist/css/bootstrap.css',
     'es6-promise',
     'es6-shim',
     'event-source-polyfill',
     'jquery',
+    'metro-dist/js/metro.min.js',
+    'metro-dist/css/metro.min.css',
+    'metro-dist/css/metro-icons.min.css',
+    'metro-dist/css/metro-responsive.min.css',
+    'metro-dist/css/metro-schemes.min.css',
+    'metro-dist/css/metro-colors.min.css',
+    'metro-dist/css/metro-rtl.min.css',
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
@@ -36,7 +43,9 @@ module.exports = (env) => {
             ]
         },
         output: {
-            publicPath: 'dist/',
+            //publicPath: 'dist/', 
+            //NOTE: Had to comment this value out because the woff and ttf files were not loaded properly. 
+            //Enabling this value results in an invalid URL -> i.e. /dist/dist/xxxxx.woff 
             filename: '[name].js',
             library: '[name]_[hash]'
         },

@@ -1,10 +1,12 @@
-<div class='container-fluid'>
-    <div class='row'>
-        <div class='col-sm-3'>
-            <nav-menu></nav-menu>
-        </div>
-        <div class='col-sm-9 body-content'>
-            <router-outlet></router-outlet>
+<div class='container page-content'>
+    <div class="grid responsive">
+        <div class="row cells2">
+            <div class="cell" style="width:28%">
+                <nav-menu></nav-menu>
+            </div>
+            <div class='cell' style="width:60%">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

@@ -20,7 +20,11 @@ module.exports = (env) => {
                 { test: /\.ts$/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader', 'angular2-router-loader'] : '@ngtools/webpack' },
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: [ 'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
+                //NOTE: Make sure to add these two loaders in this file and not in vendor.js otherwise font-awesome
+                //won't work
+                //{ test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: "url-loader?limit=10000&minetype=application/font-woff" },
+                //{ test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: "file-loader" }
             ]
         },
         plugins: [new CheckerPlugin()]
@@ -31,6 +35,7 @@ module.exports = (env) => {
     const clientBundleConfig = merge(sharedConfig, {
         entry: { 'main-client': './ClientApp/boot.browser.ts' },
         output: { path: path.join(__dirname, clientBundleOutputDir) },
+        node: { fs: 'empty' },
         plugins: [
             new webpack.DllReferencePlugin({
                 context: __dirname,
