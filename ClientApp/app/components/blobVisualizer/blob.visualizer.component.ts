@@ -13,16 +13,9 @@ export class BlobVisualizerComponent implements OnInit {
 
     ngOnInit() {
         // subscribe to router event
-        /*this.activatedRoute.params.subscribe((params: Params) => {
-            let originalUrl = params["test"];
+        this.activatedRoute.params.subscribe((params: Params) => {
+            let originalUrl = params["id"];
             console.log(originalUrl);
-        });*/
-        this.activatedRoute.queryParams
-        .subscribe(params => {
-            console.log(params); // {order: "popular"}
-
-            var order = params["OriginalUrl"];
-            console.log(order); // popular
         });
     }
 }
