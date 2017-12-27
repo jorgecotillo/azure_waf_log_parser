@@ -3,7 +3,7 @@
     <div class="treeview" data-role="treeview">
         <ul>
             <li *ngFor="let blob of _blobs" attr.data-full-url="{{blob.OriginalURL}}">
-                <a [routerLink]="['/blob-visualizer']" [queryParams]="blob">
+                <a [routerLink]="['/blob-visualizer', blob.OriginalURL]">
                     <span class="leaf">{{ blob.PrettyURL }}</span>
                 </a>
             </li>
