@@ -32,7 +32,7 @@ import { BlobVisualizerComponent } from './components/blobVisualizer/blob.visual
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'parser', component: ParserComponent },
-            { path: 'blob-visualizer/:id', component: BlobVisualizerComponent },
+            { path: 'blob-visualizer', component: BlobVisualizerComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
