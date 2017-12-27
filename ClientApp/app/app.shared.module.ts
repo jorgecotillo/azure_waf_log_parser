@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ParserComponent } from './components/parser/parser.component';
+import { BlobVisualizerComponent } from './components/blobVisualizer/blob.visualizer.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { ParserComponent } from './components/parser/parser.component';
         NavMenuComponent,
         CounterComponent,
         ParserComponent,
+        BlobVisualizerComponent,
         FetchDataComponent,
         HomeComponent
     ],
@@ -30,6 +32,7 @@ import { ParserComponent } from './components/parser/parser.component';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'parser', component: ParserComponent },
+            { path: 'blob-visualizer/:id', component: BlobVisualizerComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

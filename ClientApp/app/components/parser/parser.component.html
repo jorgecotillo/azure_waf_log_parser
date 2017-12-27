@@ -2,9 +2,20 @@
     <h5>Logs</h5>
     <div class="treeview" data-role="treeview">
         <ul>
-            <li *ngFor="let blob of _blobs">
-                <span class="leaf">{{ blob }}</span>
+            <li *ngFor="let blob of _blobs" attr.data-full-url="{{blob.OriginalURL}}">
+                <a [routerLink]="['/blob-visualizer']" [queryParams]="blob">
+                    <span class="leaf">{{ blob.PrettyURL }}</span>
+                </a>
             </li>
         </ul>
     </div>
 </div>
+<div data-role="dialog" data-close-button="true" id="dialog">
+        <h1>Simple dialog</h1>
+        <p>
+            Dialog :: Metro UI CSS - The front-end framework
+            for developing projects on the web in Windows Metro Style.
+        </p>
+</div>
+Manual from js
+<button onclick="metroDialog.open('#dialog')">Show dialog</button>

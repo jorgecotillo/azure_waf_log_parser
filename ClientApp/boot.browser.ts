@@ -4,6 +4,7 @@ import 'zone.js';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.browser.module';
+import '../node_modules/metro-dist/js/metro.min.js'; //TODO: Make sure to import the custom JS to be able to access the metro object
 
 if (module.hot) {
     module.hot.accept();
