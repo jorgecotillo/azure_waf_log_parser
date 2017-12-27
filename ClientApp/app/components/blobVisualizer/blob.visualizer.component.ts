@@ -21,7 +21,7 @@ export class BlobVisualizerComponent implements OnInit {
         .subscribe(params => {
             console.log(params); // {order: "popular"}
 
-            var order = params[0];
+            var order = params["OriginalUrl"];
             console.log(order); // popular
         });
     }
