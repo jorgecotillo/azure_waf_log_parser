@@ -1,0 +1,25 @@
+<div class="cell">
+    <div class="accordion" data-role="accordion" *ngFor="let blobObject of _blobOjects">
+        <div class="frame" *ngFor="let blob of blobObject">
+            <div class="heading">Time: {{ blob.time }} - Rule: {{ blob.properties.ruleId }} - URI: {{ blob.properties.requestUri }}</div>
+            <div class="content">
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell">
+                            <dl>
+                                <dt>Rule ID</dt>
+                                <dd>{{ blob.properties.ruleId }}</dd>
+                                <dt>Request URI</dt>
+                                <dd>{{ blob.properties.requestUri }}</dd>
+                                <dt>Client IP</dt>
+                                <dd>{{ blob.properties.clientIp }}</dd>
+                                <dt>Message</dt>
+                                <dd>{{ blob.properties.message }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
     apiUrl: 'http://example.com/api/',
-    AZURE_STORAGE_CONNECTION_STRING: 'xxxxx'
+    AZURE_STORAGE_CONNECTION_STRING: 'XXXX'
   };
