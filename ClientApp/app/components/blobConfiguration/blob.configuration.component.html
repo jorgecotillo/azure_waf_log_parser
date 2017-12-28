@@ -1,0 +1,36 @@
+<form [formGroup]="_configuration_form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="grid">
+        <div class="row">
+            <div class="cell">
+                <div class="input-control modern text" data-role="input">
+                    <input type="text" formControlName="subscriptionID">
+                    <span class="label">Subscription ID</span>
+                    <span class="placeholder">Azure Subscription ID</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell">
+                <div class="input-control modern text" data-role="input">
+                    <input type="text" formControlName="resourceGroupName">
+                    <span class="label">Resource Group</span>
+                    <span class="placeholder">Azure Resource Group</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell">
+                <div class="input-control modern text" data-role="input">
+                    <input type="text" formControlName="appGatewayName">
+                    <span class="label">App Gateway Name</span>
+                    <span class="placeholder">Azure App Gateway</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell">
+                <button type="submit" class="button primary" [disabled]="!_configuration_form.valid">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
