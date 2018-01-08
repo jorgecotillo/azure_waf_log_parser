@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="cell" style="margin:0px">
-            <button class="button" (click)="getLogDataEvent(txtDate.value)">Load logs</button>
+            <button [class.loading-cube]="_loading" class="button" (click)="getLogDataEvent(txtDate.value)">Load logs</button>
         </div>
         <div class="cell">
             <div class="treeview" data-role="treeview">

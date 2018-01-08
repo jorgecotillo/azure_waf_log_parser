@@ -11,17 +11,19 @@ import { BlobEntity } from '../shared/entities/blobEntity';
 
 export class ParserComponent implements OnInit{
 
-    public _blobs: Array<BlobEntity> = new Array<BlobEntity>(); 
+    _blobs: Array<BlobEntity> = new Array<BlobEntity>(); 
     _container: string = 'insights-logs-applicationgatewayfirewalllog';
+    _loading: boolean = false;
 
     ngOnInit() { }
 
     getLogDataEvent(date: string){
+        this._loading = true;
         let parsedDate = new Date(date);
         this.getLogData(parsedDate.getFullYear(), parsedDate.getMonth() + 1, parsedDate.getDate())
             .then(value => {
                 this._blobs = this.prettifyLogName(value.blob, value.prefix);
-                console.log(this._blobs);
+                this._loading = false;
             });
     }
 
@@ -29,15 +31,15 @@ export class ParserComponent implements OnInit{
         let subscriptionId = localStorage.getItem("subscriptionID");
         let resourceGroupName = localStorage.getItem("resourceGroupName");
         let applicationGatewayName = localStorage.getItem("appGatewayName");
-
+        let azureBlobConnString = localStorage.getItem("azureBlobConnString");
         let prefix = 'resourceId=/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}/y={year}/m={month}/d={day}';
         
         prefix = 
             prefix.replace("{year}", year.toString());
         prefix = 
-            prefix.replace("{month}", month.toString());
+            prefix.replace("{month}", this.pad(month));
         prefix = 
-            prefix.replace("{day}", day.toString());
+            prefix.replace("{day}", this.pad(day));
         prefix = 
             prefix.replace("{subscriptionId}", subscriptionId);
         prefix = 
@@ -46,7 +48,7 @@ export class ParserComponent implements OnInit{
             prefix.replace("{applicationGatewayName}", applicationGatewayName);
         
         console.log(prefix);
-        let blobService = createBlobService(environment.AZURE_STORAGE_CONNECTION_STRING);
+        let blobService = createBlobService(azureBlobConnString);
 
         return new Promise<any>((resolve, reject) => {
             let blobs: Array<string> = new Array<string>();
@@ -79,5 +81,9 @@ export class ParserComponent implements OnInit{
         });
 
         return blobEntities;
+    }
+
+    pad(n: number): string {
+        return (n < 10) ? ("0" + n.toString()) : n.toString();
     }
 }

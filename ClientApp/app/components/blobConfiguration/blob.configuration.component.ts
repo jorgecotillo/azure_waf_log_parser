@@ -9,7 +9,7 @@ import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 
 export class BlobConfigurationComponent implements OnInit {
     _configuration_form: FormGroup;
-
+    _saved: boolean = false;
     constructor (private formBuilder: FormBuilder){}
 
     ngOnInit() {
@@ -19,7 +19,8 @@ export class BlobConfigurationComponent implements OnInit {
             // value.
             subscriptionID: ['', Validators.required],
             resourceGroupName: ['', Validators.required],
-            appGatewayName: ['', Validators.required]
+            appGatewayName: ['', Validators.required],
+            azureBlobConnString: ['', Validators.required]
             // other controls are here...
         });
     }
@@ -28,12 +29,15 @@ export class BlobConfigurationComponent implements OnInit {
         let subscriptionID = this._configuration_form.value.subscriptionID;
         let resourceGroupName = this._configuration_form.value.resourceGroupName;
         let appGatewayName = this._configuration_form.value.appGatewayName;
+        let azureBlobConnString = this._configuration_form.value.azureBlobConnString;
 
-        console.log(subscriptionID, resourceGroupName, appGatewayName);
+        console.log(subscriptionID, resourceGroupName, appGatewayName, azureBlobConnString);
 
         localStorage.setItem('subscriptionID', subscriptionID);
         localStorage.setItem('resourceGroupName', resourceGroupName);
         localStorage.setItem('appGatewayName', appGatewayName);
+        localStorage.setItem('azureBlobConnString', azureBlobConnString);
+        this._saved = true;
     }
 
 }

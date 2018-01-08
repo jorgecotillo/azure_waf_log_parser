@@ -1,4 +1,5 @@
 <div class="cell">
+    <h5>Logs</h5>
     <div class="accordion" data-role="accordion" *ngFor="let blobObject of _blobOjects">
         <div class="frame" *ngFor="let blob of blobObject">
             <div class="heading">Time: {{ blob.time }} - Rule: {{ blob.properties.ruleId }} - URI: {{ blob.properties.requestUri }}</div>
@@ -23,3 +24,4 @@
         </div>
     </div>
 </div>
+<div *ngIf="_loading" data-role="preloader" data-type="square" data-style="color">Loading ...</div>

@@ -13,22 +13,26 @@ export class BlobVisualizerComponent implements OnInit {
 
     _container: string = 'insights-logs-applicationgatewayfirewalllog';
     _originalUrl: string;
-    public _blobOjects: Array<object>;
+    _blobOjects: Array<object>;
+    _loading: boolean = false;
 
     constructor(private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
+        this._loading = true;
         this.activatedRoute.params.subscribe((params: Params) => {
             this._originalUrl = params["id"];
             this.getBlobText(this._originalUrl).then(value => {
                 this.generateBlobObject(value);
                 console.log(this._blobOjects);
+                this._loading = false;
             });
         });
     }
 
     getBlobText(fileName: string){
-        var blobService = createBlobService(environment.AZURE_STORAGE_CONNECTION_STRING);
+        let azureBlobConnString = localStorage.getItem("azureBlobConnString");
+        var blobService = createBlobService(azureBlobConnString);
         return new Promise<string>((resolve, reject) => {
             blobService
                 .getBlobToText(

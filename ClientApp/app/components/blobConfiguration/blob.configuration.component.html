@@ -28,9 +28,19 @@
             </div>
         </div>
         <div class="row">
+                <div class="cell">
+                    <div class="input-control modern text" data-role="input">
+                        <input type="text" formControlName="azureBlobConnString">
+                        <span class="label">Azure Blob Conn String</span>
+                        <span class="placeholder">Azure Blob Conn String</span>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
             <div class="cell">
                 <button type="submit" class="button primary" [disabled]="!_configuration_form.valid">Save</button>
             </div>
         </div>
     </div>
 </form>
+<div *ngIf="_saved">Successfully saved!!</div> 

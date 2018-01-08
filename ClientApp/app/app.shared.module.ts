@@ -31,14 +31,11 @@ import { BlobConfigurationComponent } from './components/blobConfiguration/blob.
         FormsModule,
         ReactiveFormsModule, //NOTE: This import is needed since Angular v2.3+ 
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: '', redirectTo: 'parser', pathMatch: 'full' },
             { path: 'parser', component: ParserComponent },
             { path: 'blob-visualizer/:id', component: BlobVisualizerComponent },
             { path: 'blob-configuration', component: BlobConfigurationComponent },
-            { path: '**', redirectTo: 'home' }
+            { path: '**', redirectTo: 'parser' }
         ])
     ]
 })
